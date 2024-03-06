@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Repositories.EFCore;
+using WebApi.Extensions;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,11 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-// DbContext'in baðlanacaðý veritabaný baðlantý dizesini alýn
-string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-
-// DbContext'i servis olarak ekleyin
-builder.Services.AddDbContext<RepositoryContext>(options => options.UseSqlServer(connectionString));
+//SqlContext
+builder.Services.ConfigureSqlContext(builder.Configuration);
 
 builder.Services.AddControllers()
 	.AddNewtonsoftJson();

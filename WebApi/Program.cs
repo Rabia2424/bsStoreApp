@@ -12,6 +12,8 @@ builder.Services.AddControllers();
 //SqlContext
 builder.Services.ConfigureSqlContext(builder.Configuration);
 
+builder.Services.ConfigureRepositoryManager();
+
 builder.Services.AddControllers()
 	.AddNewtonsoftJson();
 

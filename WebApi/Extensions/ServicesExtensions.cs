@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Repositories.Contracts;
 using Repositories.EFCore;
 
 namespace WebApi.Extensions
@@ -13,6 +14,11 @@ namespace WebApi.Extensions
 
             // DbContext'i servis olarak ekleyin
             services.AddDbContext<RepositoryContext>(options => options.UseSqlServer(connectionString));
+        }
+
+        public static void ConfigureRepositoryManager(this IServiceCollection services)
+        {
+            services.AddScoped<IRepositoryManager, RepositoryManager>();
         }
     }
 }

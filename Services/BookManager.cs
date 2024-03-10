@@ -50,6 +50,10 @@ namespace Services
         public void UpdateOneBook(int id, Book book, bool trackChanges)
         {
             var model = _manager.Book.GetOneBookById(id, trackChanges);
+
+            if(model==null)
+                throw new ArgumentNullException(nameof(model)); 
+
             model.Title = book.Title;   
             model.Price = book.Price;
             _manager.Book.Update(model);

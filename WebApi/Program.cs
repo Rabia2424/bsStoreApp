@@ -16,6 +16,7 @@ builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 
 builder.Services.AddControllers()
+	.AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly)
 	.AddNewtonsoftJson();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

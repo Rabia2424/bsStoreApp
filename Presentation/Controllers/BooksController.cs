@@ -1,18 +1,17 @@
 ﻿using Entities.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Repositories.Contracts;
-using Repositories.EFCore;
 using Services.Contracts;
-using System.Linq.Expressions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-
-
-namespace WebApi.Controllers
+namespace Presentation.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/books")]
     public class BooksController : ControllerBase
     {
         private readonly IServiceManager _manager;
@@ -62,7 +61,7 @@ namespace WebApi.Controllers
                 if (book is null)
                     return BadRequest();//400
 
-                _manager.BookService.CreateOneBook(book);   
+                _manager.BookService.CreateOneBook(book);
 
                 return StatusCode(201, book);
             }
@@ -77,7 +76,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                if(book is null)    
+                if (book is null)
                     return BadRequest();
 
                 _manager.BookService.UpdateOneBook(id, book, true);
@@ -91,7 +90,7 @@ namespace WebApi.Controllers
         }
 
         [HttpDelete("{id:int}")]
-        public IActionResult DeleteOneBook([FromRoute(Name ="id")] int id)
+        public IActionResult DeleteOneBook([FromRoute(Name = "id")] int id)
         {
             try
             {
@@ -124,7 +123,7 @@ namespace WebApi.Controllers
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);    
+                throw new Exception(ex.Message);
             }
         }
     }

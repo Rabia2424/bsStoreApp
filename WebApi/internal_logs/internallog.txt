@@ -6,3 +6,19 @@
 2024-04-07 10:20:58.3973 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
 2024-04-07 10:20:58.3973 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\Rabia\Desktop\Projelerim\VisualStudioProjelerim\repos\bsStoreApp\WebApi\nlog.config
 2024-04-07 10:20:58.4116 Info Configuration initialized.
+2024-04-07 12:47:04.1831 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-07 12:47:04.2028 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-07 12:47:04.2132 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\Rabia\Desktop\Projelerim\VisualStudioProjelerim\repos\bsStoreApp\WebApi\nlog.config
+2024-04-07 12:47:04.2132 Info Configuration initialized.
+2024-04-07 12:50:57.2357 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-07 12:50:57.2546 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-07 12:50:57.2656 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\Rabia\Desktop\Projelerim\VisualStudioProjelerim\repos\bsStoreApp\WebApi\nlog.config
+2024-04-07 12:50:57.2744 Info Configuration initialized.
+2024-04-07 12:51:25.2363 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-07 12:51:25.2454 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-07 12:51:25.2454 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\Rabia\Desktop\Projelerim\VisualStudioProjelerim\repos\bsStoreApp\WebApi\nlog.config
+2024-04-07 12:51:25.2592 Info Configuration initialized.
+2024-04-07 13:10:50.9634 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-07 13:10:50.9735 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-07 13:10:50.9735 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\Rabia\Desktop\Projelerim\VisualStudioProjelerim\repos\bsStoreApp\WebApi\nlog.config
+2024-04-07 13:10:50.9917 Info Configuration initialized.

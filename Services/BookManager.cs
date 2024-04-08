@@ -1,4 +1,6 @@
-﻿using Entities.Exceptions;
+﻿using AutoMapper;
+using Entities.DTOs;
+using Entities.Exceptions;
 using Entities.Models;
 using Repositories.Contracts;
 using Services.Contracts;
@@ -14,15 +16,18 @@ namespace Services
     {
         private readonly IRepositoryManager _manager;
         private readonly ILoggerService _logger;
+        private readonly IMapper _mapper;
 
-        public BookManager(IRepositoryManager manager,
-            ILoggerService logger)
-        {
-            _manager = manager;
-            _logger = logger;
-        }
+		public BookManager(IRepositoryManager manager,
+			ILoggerService logger,
+			IMapper mapper)
+		{
+			_manager = manager;
+			_logger = logger;
+			_mapper = mapper;
+		}
 
-        public Book CreateOneBook(Book book)
+		public Book CreateOneBook(Book book)
         {
             _manager.Book.CreateOneBook(book);
             _manager.Save();
@@ -55,15 +60,20 @@ namespace Services
             return book;
         }
 
-        public void UpdateOneBook(int id, Book book, bool trackChanges)
+        public void UpdateOneBook(int id, BookDtoForUpdate bookDto, bool trackChanges)
         {
             var model = _manager.Book.GetOneBookById(id, trackChanges);
 
             if (model == null)
-                throw new BookNotFoundException(id);       
+                throw new BookNotFoundException(id);
 
-            model.Title = book.Title;   
-            model.Price = book.Price;
+            //Mapping
+            //model.Title = book.Title;   
+            //model.Price = book.Price;
+
+            model = _mapper.Map<Book>(bookDto);
+            //_mapper.Map(bookDto,model);
+
             _manager.Book.Update(model);
             _manager.Save();
         }

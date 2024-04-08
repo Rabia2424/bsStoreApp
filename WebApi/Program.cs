@@ -12,7 +12,7 @@ LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nl
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+//builder.Services.AddControllers();
 
 //SqlContext
 builder.Services.ConfigureSqlContext(builder.Configuration);
@@ -23,7 +23,12 @@ builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureLoggerService();
 builder.Services.AddAutoMapper(typeof(Program));
 
-builder.Services.AddControllers()
+builder.Services.AddControllers(config =>
+{
+	config.RespectBrowserAcceptHeader = true;
+	config.ReturnHttpNotAcceptable = true;
+})
+	.AddXmlDataContractSerializerFormatters()
 	.AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly)
 	.AddNewtonsoftJson();
 
@@ -45,7 +50,7 @@ if (app.Environment.IsDevelopment())
 	app.UseSwaggerUI();
 }
 
-if(app.Environment.IsProduction())
+if (app.Environment.IsProduction())
 {
 	app.UseHsts();
 }

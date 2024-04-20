@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.EntityFrameworkCore;
 using NLog;
+using Presentation.ActionFilters;
 using Repositories.EFCore;
 using Services.Contracts;
 using WebApi.Extensions;
@@ -23,6 +24,10 @@ builder.Services.ConfigureServiceManager();
 
 builder.Services.ConfigureLoggerService();
 builder.Services.AddAutoMapper(typeof(Program));
+
+builder.Services.ConfigureActionFilters();
+
+
 
 builder.Services.AddControllers(config =>
 {

@@ -27,6 +27,8 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.ConfigureActionFilters();
 
+builder.Services.ConfigureCors();
+
 
 
 builder.Services.AddControllers(config =>
@@ -69,6 +71,8 @@ if (app.Environment.IsProduction())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
 

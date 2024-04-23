@@ -10,37 +10,36 @@ using System.Threading.Tasks;
 
 namespace Repositories.EFCore
 {
-    public class BookRepository : RepositoryBase<Book>, IBookRepository
-    {
-        public BookRepository(RepositoryContext context) : base(context)
-        {
-        }
+	public sealed class BookRepository : RepositoryBase<Book>, IBookRepository
+	{
+		public BookRepository(RepositoryContext context) : base(context)
+		{
+		}
 
-        public void CreateOneBook(Book book) => Create(book);
-
-
-        public void DeleteOneBook(Book book) => Delete(book);
+		public void CreateOneBook(Book book) => Create(book);
 
 
-        public async Task<PagedList<Book>> GetAllBooksAsync(BookParameters bookParameters, bool trackChanges)
-        {
-            var books = await FindByCondition(b=>
-            b.Price >= bookParameters.MinPrice && b.Price <= bookParameters.MaxPrice
-            ,trackChanges)
-           .OrderBy(b => b.Id)
-           .ToListAsync();
+		public void DeleteOneBook(Book book) => Delete(book);
 
-            return PagedList<Book>
-                .ToPagedList(books, bookParameters.PageNumber, bookParameters.PageSize);
+
+		public async Task<PagedList<Book>> GetAllBooksAsync(BookParameters bookParameters, bool trackChanges)
+		{
+			var books = await FindAll(trackChanges)
+			   .FilterBooks(bookParameters.MinPrice, bookParameters.MaxPrice)
+			   .OrderBy(b => b.Id)
+			   .ToListAsync();
+
+			return PagedList<Book>
+				.ToPagedList(books, bookParameters.PageNumber, bookParameters.PageSize);
 		}
 
 		public async Task<Book> GetOneBookByIdAsync(int id, bool trackChanges)
-        {
-            return await FindByCondition(b => b.Id == id, trackChanges).
-                SingleOrDefaultAsync();
-        }
+		{
+			return await FindByCondition(b => b.Id == id, trackChanges).
+				SingleOrDefaultAsync();
+		}
 
-        public void UpdateOneBook(Book book) => Update(book);
+		public void UpdateOneBook(Book book) => Update(book);
 
-    }
+	}
 }

@@ -29,6 +29,8 @@ builder.Services.ConfigureActionFilters();
 
 builder.Services.ConfigureCors();
 
+builder.Services.ConfigureDataShaper();
+
 
 
 builder.Services.AddControllers(config =>
